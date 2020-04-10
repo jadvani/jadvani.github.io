@@ -4,9 +4,9 @@
 
 ## Preview
 
-[![Resume Preview](https://startbootstrap.com/assets/img/screenshots/themes/resume.png)](https://blackrockdigital.github.io/startbootstrap-resume/)
+[![Resume Preview](https://github.com/jadvani/jadvani.github.io/blob/master/img/preview.jpg)](https://jadvani.github.io/)
 
-**[View Live Preview](https://blackrockdigital.github.io/startbootstrap-resume/)**
+**[View Live Preview](https://jadvani.github.io/)**
 
 ## Status
 
