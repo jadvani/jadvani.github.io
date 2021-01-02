@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Books I read - Javier Advani</title>
+
+
+<body>
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<input type="button" value="Go back to main page" onclick="history.back()">
+
+<input type="text" id="myInput" onkeyup="search()" placeholder="Search by Name.." title="Type in a name">
+<style >
+table, th, td {
+
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+
+
+</style>
+<select id="countriesDropdown" oninput="filterTable()">
+  <option>All</option>
+  <option>2020</option>
+  <option>2021</option>
+</select>
+    <table id="showData"></table>
+</body>
+
+<script >
+	function filterTable() {
+	  // Variables
+	  let dropdown, table, rows, cells, country, filter;
+	  dropdown = document.getElementById("Year");
+	  table = document.getElementById("showData");
+	  rows = table.getElementsByTagName("tr");
+	  filter = dropdown.value;
+
+	  // Loops through rows and hides those with countries that don't match the filter
+	  for (let row of rows) { // `for...of` loops through the NodeList
+		cells = row.getElementsByTagName("td");
+		country = cells[1] || null; // gets the 2nd `td` or nothing
+		// if the filter is set to 'All', or this is the header row, or 2nd `td` text matches filter
+		if (filter === "All" || !country || (filter === country.textContent)) {
+		  row.style.display = ""; // shows this row
+		}
+		else {
+		  row.style.display = "none"; // hides this row
+		}
+	  }
+	}
+	function search() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInput");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("showData");
+	  tr = table.getElementsByTagName("tr");
+	  for (i = 0; i < tr.length; i++) {
+		td = tr[i].getElementsByTagName("td")[0];
+		if (td) {
+		  txtValue = td.textContent || td.innerText;
+		  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+			tr[i].style.display = "";
+		  } else {
+			tr[i].style.display = "none";
+		  }
+		}       
+	  }
+	}
+
+    function CreateTableFromJSON() {
+        var myBooks = [
+            {
+                "Book Name": "Magallanes: El hombre y su gesta",
+				"Author": "Stefan Zweig",
+                "Publishing house": "Capitán Swing",
+				"Month": "December",
+				"Year": "2020"
+            },
+            {
+                "Book Name": "Animal Tropical",
+				"Author": "Pedro Juan Gutiérrez",
+                "Publishing house": "Anagrama",
+				"Month": "January",
+				"Year": "2021"
+            },
+            {
+                "Book Name": "ejemplo3",
+				"Author": "Stefan Zweig",
+                "Publishing house": "125.60",
+				"Month": "December",
+				"Year": "2020"
+            },
+        ]
+
+        // EXTRACT VALUE FOR HTML HEADER. 
+        // ('Book ID', 'Book Name', 'Category' and 'Price')
+        var col = [];
+        for (var i = 0; i < myBooks.length; i++) {
+            for (var key in myBooks[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);                   // TABLE ROW.
+
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");      // TABLE HEADER.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+        }
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < myBooks.length; i++) {
+
+            tr = table.insertRow(-1);
+
+            for (var j = 0; j < col.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = myBooks[i][col[j]];
+            }
+        }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("showData");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+    }
+CreateTableFromJSON()
+</script>
+</html>
