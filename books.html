@@ -20,12 +20,22 @@ table, th, td {
 
   margin-left: auto;
   margin-right: auto;
-  width: 60%;
+  width: 62%;
+  border:1px;
+  
+  background-color:#eee;
+  
+}
+body {
+
+  background-repeat: no-repeat, repeat;
+  background-color: #cccccc;
+  
 }
 
-
 </style>
-<select id="countriesDropdown" oninput="filterTable()">
+
+<select id="Year" oninput="filterTable()">
   <option>All</option>
   <option>2020</option>
   <option>2021</option>
@@ -45,7 +55,7 @@ table, th, td {
 	  // Loops through rows and hides those with countries that don't match the filter
 	  for (let row of rows) { // `for...of` loops through the NodeList
 		cells = row.getElementsByTagName("td");
-		country = cells[1] || null; // gets the 2nd `td` or nothing
+		country = cells[4] || null; // gets the 2nd `td` or nothing
 		// if the filter is set to 'All', or this is the header row, or 2nd `td` text matches filter
 		if (filter === "All" || !country || (filter === country.textContent)) {
 		  row.style.display = ""; // shows this row
