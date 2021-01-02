@@ -7,15 +7,26 @@
   <meta name="author" content="">
 
   <title>Books I read - Javier Advani</title>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $(".btn1").click(function(){
+    $("p").fadeOut();
+  });
+  $(".btn2").click(function(){
+    $("p").fadeIn();
+  });
+});
+</script>
 
 <body>
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<input type="button" value="Go back to main page" onclick="history.back()">
+<input class="btn1" type="button" value="Go back to main page" onclick="history.back()">
 
-<input type="text" id="myInput" onkeyup="search()" placeholder="Search by Name.." title="Type in a name">
+<input type="text" id="myInput" onkeyup="search()" placeholder="Search by Book name or author.." title="Type in a name">
 <style >
+
 table, th, td {
 
   margin-left: auto;
@@ -27,7 +38,7 @@ table, th, td {
   
 }
 body {
-
+transition: width 2s;
   background-repeat: no-repeat, repeat;
   background-color: #cccccc;
   
