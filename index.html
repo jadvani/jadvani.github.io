@@ -345,23 +345,28 @@
         <h2 class="mb-5">Books (Reading List)</h2>
 		<p>Starting from November 2020, I decided to post all the books I finished reading, including the date of conclusion and my personal rating. </p>
 
+
+		<input type="text" id="myInput" onkeyup="search()" placeholder="Book name/ author..." title="Type in a name">
 		<select id="Year" oninput="filterTable()">
 		  <option>All</option>
 		  <option>2020</option>
 		  <option>2021</option>
 		</select>
-		<input type="text" id="myInput" onkeyup="search()" placeholder="Book name/ author..." title="Type in a name">
 		<style>
 			table {
 			  border-collapse: separate;
-			  border-spacing: 50px 0;
+			  border-spacing: 0;
+			  border:solid grey 1px;
+			  border-radius:6px;
+		      -moz-border-radius:6px;
 			}
 
-			td {
-			  padding: 10px 0;
+			td, th {
+				border-left:solid grey 1px;
+				border-top:solid grey 1px;
 			}
 		</style>
-
+<br><br>
 		<table id="showData"></table>
       </div>
     </section>
