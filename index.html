@@ -343,6 +343,8 @@
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="books">
       <div class="w-100">
         <h2 class="mb-5">Books (Reading List)</h2>
+		<p>Starting from November 2020, I decided to post all the books I finished reading, including the date of conclusion and my personal rating. </p>
+
 		<select id="Year" oninput="filterTable()">
 		  <option>All</option>
 		  <option>2020</option>
@@ -359,6 +361,7 @@
 			  padding: 10px 0;
 			}
 		</style>
+
 		<table id="showData"></table>
       </div>
     </section>
@@ -427,31 +430,34 @@ $(document).ready(function(){
 
     function CreateTableFromJSON() {
         var myBooks = [
+			{
+                "Book Name": "Animal Tropical",
+				"Author": "Pedro Juan Gutiérrez",
+                "Publishing house": "Anagrama",
+				"Month": "January",
+				"Year": "2021",
+				"Rating" : "★★★☆☆"
+            },
             {
                 "Book Name": "Magallanes: El hombre y su gesta",
 				"Author": "Stefan Zweig",
                 "Publishing house": "Capitán Swing",
 				"Month": "December",
-				"Year": "2020"
+				"Year": "2020",
+				"Rating" : "★★★★☆"
             },
             {
-                "Book Name": "Animal Tropical",
-				"Author": "Pedro Juan Gutiérrez",
-                "Publishing house": "Anagrama",
-				"Month": "January",
-				"Year": "2021"
-            },
-            {
-                "Book Name": "ejemplo3",
-				"Author": "Stefan Zweig",
-                "Publishing house": "125.60",
-				"Month": "December",
-				"Year": "2020"
+                "Book Name": "Cien Años de Soledad (Edición Ilustrada)",
+				"Author": "Gabriel García Márquez",
+                "Publishing house": "Random House",
+				"Month": "November",
+				"Year": "2020",
+				"Rating" : "★★★★★"
             },
         ]
 
+
         // EXTRACT VALUE FOR HTML HEADER. 
-        // ('Book ID', 'Book Name', 'Category' and 'Price')
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {
             for (var key in myBooks[i]) {
@@ -490,7 +496,9 @@ $(document).ready(function(){
         divContainer.innerHTML = "";
         divContainer.appendChild(table);
     }
-CreateTableFromJSON()
+		CreateTableFromJSON()
+
+
 </script>
 </body>
 
