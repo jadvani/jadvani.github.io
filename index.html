@@ -394,7 +394,7 @@ $(document).ready(function(){
     $("p").fadeIn();
   });
 });
-
+//filter by year
 	function filterTable() {
 	  // Variables
 	  let dropdown, table, rows, cells, country, filter;
@@ -406,7 +406,7 @@ $(document).ready(function(){
 	  // Loops through rows and hides those with countries that don't match the filter
 	  for (let row of rows) { // `for...of` loops through the NodeList
 		cells = row.getElementsByTagName("td");
-		country = cells[4] || null; // gets the 2nd `td` or nothing
+		country = cells[3] || null; // gets the 2nd `td` or nothing
 		// if the filter is set to 'All', or this is the header row, or 2nd `td` text matches filter
 		if (filter === "All" || !country || (filter === country.textContent)) {
 		  row.style.display = ""; // shows this row
@@ -424,14 +424,22 @@ $(document).ready(function(){
 	  tr = table.getElementsByTagName("tr");
 	  for (i = 0; i < tr.length; i++) {
 		td = tr[i].getElementsByTagName("td")[0];
+		td2 = tr[i].getElementsByTagName("td")[1]
 		if (td) {
 		  txtValue = td.textContent || td.innerText;
 		  if (txtValue.toUpperCase().indexOf(filter) > -1) {
 			tr[i].style.display = "";
 		  } else {
-			tr[i].style.display = "none";
+		  		if (td2) {
+				txtValue = td2.textContent || td2.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+		  } 	else {
+					tr[i].style.display = "none";
 		  }
-		}       
+		}
+		  }
+		}  		
 	  }
 	}
 
