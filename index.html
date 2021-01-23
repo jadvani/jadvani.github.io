@@ -343,6 +343,7 @@
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="books">
       <div class="w-100">
         <h2 class="mb-5">Books (Reading List)</h2>
+		<ul class="fa-ul mb-0">
 		<p>Starting from November 2020, I decided to post all the books I finished reading, including the date of conclusion and my personal rating. </p>
 
 
@@ -445,6 +446,13 @@ $(document).ready(function(){
 
     function CreateTableFromJSON() {
         var myBooks = [
+			{
+                "Book Name": "Los asquerosos",
+				"Author": "Santiago Lorenzo",
+				"Month": "January",
+				"Year": "2021",
+				"Rating" : "★★★★☆"
+            },
 			{
                 "Book Name": "Animal Tropical",
 				"Author": "Pedro Juan Gutiérrez",
